@@ -90,7 +90,11 @@ OpenWorker::~OpenWorker () {
 }
 
 void OpenWorker::Execute () {
-  SetStatus(database->OpenDatabase(options));
+  if (options->create_if_missing) {
+    SetStatus(database->OpenDatabase(options));
+  } else {
+    SetStatus(database->OpenForReadOnly(options));
+  }
 }
 
 /** CLOSE WORKER **/

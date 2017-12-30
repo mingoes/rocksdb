@@ -43,6 +43,12 @@ rocksdb::Status Database::OpenDatabase (
   return rocksdb::DB::Open(*options, **location, &db);
 }
 
+rocksdb::Status Database::OpenForReadOnly (
+        rocksdb::Options* options
+    ) {
+  return rocksdb::DB::OpenForReadOnly(*options, **location, &db);
+}
+
 rocksdb::Status Database::PutToDatabase (
         rocksdb::WriteOptions* options
       , rocksdb::Slice key
