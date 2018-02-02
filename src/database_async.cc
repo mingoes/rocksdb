@@ -65,6 +65,8 @@ OpenWorker::OpenWorker (
 
   options = new rocksdb::Options(rocksdb::ConvertOptions(levelOptions));
   options->max_log_file_size          = maxFileSize;
+  options->target_file_size_base      = 268435456;
+  options->num_levels                 = 4;
 /*
   options = new rocksdb::Options();
   options->create_if_missing = levelOptions.create_if_missing;
